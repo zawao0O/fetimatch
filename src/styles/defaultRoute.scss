@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  .default-route-container {
+    position: absolute;
+    top: 0;
+    footer {
+      width: 100vw;
+      height: 90px;
+      background-color: #202f55;
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+      .footer-text {
+        color: #fff;
+        line-height: 5.5rem;
+      }
+    }
+  }
+}

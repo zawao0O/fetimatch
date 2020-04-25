@@ -1,0 +1,40 @@
+header {
+  display: flex;
+  width: 100vw;
+  height: 90px;
+  background: -webkit-linear-gradient(right, rgb(218, 169, 242), rgb(150, 68, 233));;
+  .header-logo-cont {
+    width: 50%;
+    padding-left: 30px;
+    .header-app-logo {
+      display: inline-block;
+      color: #fff;
+      line-height: 3rem;
+    }
+  }
+  .header-menu-cont {
+    text-align: right;
+    width: 50%;
+    padding-right: 30px;
+    .header-menu {
+      line-height: 3.25rem;
+      color: #fff;
+    }
+  }
+}
+
+footer {
+  background-color: #a1a1a1;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 90px;
+  .footer-txt-cont {
+    p {
+      color: #fff;
+      line-height: 3.5rem;
+    }
+    text-align: center;
+  }
+}
+

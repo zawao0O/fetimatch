@@ -1,0 +1,14 @@
+* {
+  .prf-main-cont {
+    padding-top: 90px;
+    width: 75%;
+    margin: 0 auto;
+    .user-profile {
+      display: flex;
+      flex-direction: column;
+      h1 label{
+        display: inline-block;
+      }
+    }
+  }
+}
