@@ -10,7 +10,7 @@ class Header extends Component {
     return(
       <header className="header">
           <div className="header-logo-cont">
-          <h1 className="header-app-logo">ふぇちマッチ</h1>
+          <h1 className="header-app-logo" onClick={() => {this.props.history.push("/timeLine")}}>ふぇちマッチ</h1>
           </div>
           <div className="header-menu-cont">
             <h2 className="header-menu" onClick={() => {this.props.history.push("/profile")}}>プロフィール</h2>

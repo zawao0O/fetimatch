@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 // import { Route } from "react-router-dom";
-import firebase from "../firebase";
-import db from "../firebase";
+import firebase, { db } from "../firebase";
 
 import "../styles/profile.scss";
 import Header from "../components/header";
+import Footer from "../components/footer";
 
 class Profile extends Component {
   constructor(props) {
@@ -13,33 +13,26 @@ class Profile extends Component {
     this.state = {
       name: "ゲスト",
       age: 23,
-      feti: "molesting"
+      feti: "ノーマル",
+      user: null
     };
-
-    firebase.auth().onAuthStateChanged( user => {
-      if(user) {
-        let currentUser = firebase.auth().currentUser;
-        this.state = {uid: toString(currentUser.uid)};
-      } else {
-        console.log("ユーザーがいません");
-      }
-    });
-
   }
 
   componentDidMount() {
-
-    console.log(this.state.uid);
-
-
-    // if(userData.exists) {
-    //   console.log(userData.id);
-    //   console.log(userData.data());
-    // } else {
-    //   console.log("no such collection");
-    // }
-
-    
+    // uidからユーザー取得
+    firebase.auth().onAuthStateChanged( user => {
+      db
+      .collection("users")
+      .doc(`${user.uid}`)
+      .get()
+      .then( doc => {
+        this.setState({
+          name: doc.data().name,
+          age: doc.data().age,
+          feti: doc.data().category
+        });
+      });
+    });
   }
 
 
@@ -49,6 +42,9 @@ class Profile extends Component {
         <Header />
         <div className="prf-main-cont">
           <div className="user-profile">
+            <div className="prf-img-cont">
+              <img src="./logo192.png" alt="profile-picture" />
+            </div>
             <h1><label>ユーザーネーム</label></h1>
             <h3>{this.state.name}</h3>
             <h1><label>年齢</label></h1>
@@ -56,7 +52,13 @@ class Profile extends Component {
             <h1><label>性癖</label></h1>
             <h3>{this.state.feti}</h3>
           </div>
+          <div className="edit-btn-cont">
+            <button className="edit-button" onClick={() => {this.props.history.push("/profileEdit")}}>
+              <p className="edit-btn-txt">編集する</p>
+            </button>
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }

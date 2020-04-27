@@ -13,7 +13,7 @@ class TimeLine extends Component {
 
   render() {
     return(
-      <div>
+      <div className="timeline-cont">
         <Header />
         <div className="tl-container">
           <div className="timeline-scroll-li">
@@ -25,6 +25,7 @@ class TimeLine extends Component {
             </ul>
           </div>
           <div className="timeline-serch-form">
+            <h2>セレクトチャット</h2>
             <form className="serch-partner-form">
               <h1>性別：</h1>
               <label >
@@ -47,6 +48,11 @@ class TimeLine extends Component {
                 </select>
               </label>
             </form>
+            <div className="search-btn-cont">
+              <button type="button" className="search-btn" onClick={() => {alert("検索中...")}}>
+                <p className="search-btn-txt">検索する</p>
+              </button>
+            </div>
           </div>
         </div>
         <Footer />

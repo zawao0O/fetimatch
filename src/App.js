@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from "./pages/login";
 import TimeLine from "./pages/timeLine";
 import Profile from "./pages/profile";
+import ProfileEdit from "./pages/profileEdit";
+
+// モジュール
 import firebase from "../src/firebase";
 import "./App.scss";
 
@@ -18,6 +21,7 @@ class App extends Component {
             <Route exact path="/login" component={ Login } />
             <Route path="/timeLine" component={ TimeLine } />
             <Route path="/profile" component={ Profile } />
+            <Route path="/profileEdit" component={ ProfileEdit } />
           </Switch>
         </div>
         </Router>

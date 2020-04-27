@@ -18,10 +18,12 @@ const config = {
 }
 
 firebase.initializeApp(config);
-// firebase apiとの接続
-export default firebase;
+
 // cloud firestore
 export const db = firebase.firestore();
 // firebase storage(画像やファイル保存用)
 export const storage = firebase.storage();
+// firebase apiとの接続
+export default firebase;
+
 

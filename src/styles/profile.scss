@@ -1,14 +1,61 @@
 * {
-  .prf-main-cont {
-    padding-top: 90px;
-    width: 75%;
-    margin: 0 auto;
-    .user-profile {
-      display: flex;
-      flex-direction: column;
-      h1 label{
-        display: inline-block;
+  .prf-cont {
+    margin-bottom: 180px;
+    .prf-main-cont {
+      padding-top: 90px;
+      width: 55%;
+      margin: 0 auto;
+      .user-profile {
+        display: flex;
+        flex-direction: column;
+        .prf-img-cont {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+        h1 label{
+          display: inline-block;
+        }
+      }
+      .edit-btn-cont{
+        display: flex;
+        justify-content: flex-end;
+        .edit-button {
+          border-radius: 5px;
+          width: 100px;
+          height: 60px;
+          background: -webkit-linear-gradient(right, rgb(218, 169, 242), rgb(150, 68, 233));
+          .edit-btn-txt {
+            font-size: 16.5px;
+            color: #fff;
+          }
+        }
       }
     }
   }
+}
+
+.profile-edit-btn-cont {
+  display: flex;
+  justify-content: flex-end;
+  .profile-edit-btn {
+    border-radius: 5px;
+    width: 100px;
+    height: 60px;
+    background: -webkit-linear-gradient(right, rgb(218, 169, 242), rgb(150, 68, 233));
+    .profile-edit-txt {
+      font-size: 16.5px;
+      color: #fff;
+    }
+  }
+}
+
+.edit-form {
+  border-width: 1px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 18px;
+  margin-bottom: 30px;
+  background: transparent;
 }
