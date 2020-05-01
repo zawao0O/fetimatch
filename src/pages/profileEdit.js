@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Route } from "react-router-dom";
-import firebase, { db } from "../firebase";
+import firebase, { db, storage } from "../firebase";
 
 import "../styles/profile.scss";
 import Header from "../components/header";
@@ -14,10 +14,12 @@ class ProfileEdit extends Component {
     this.state = {
       name: "",
       age: "",
-      feti: ""
+      feti: "",
+      picture: "./defaultUser.png"
     };
 
     this.handleDataUpdate = this.handleDataUpdate.bind(this);
+    this.fileInput = React.createRef();
   }
 
   componentDidMount() {
@@ -39,12 +41,28 @@ class ProfileEdit extends Component {
 
   handleDataUpdate(name, age, feti) {
     firebase.auth().onAuthStateChanged( user => { 
+      // プロフ変更処理
       db
       .collection("users")
       .doc(`${user.uid}`)
       .set({ name: name, age: age, category: feti},{merge: true})
       .then(() => {alert("sucsessfully updated")})
       .catch(() => {alert("update faled")});
+
+      // 画像保存の処理を記述
+
+      let picturePath = this.state.picture.replace(/C:\\fakepath\\/, `${user.uid}/`);
+      alert(picturePath);
+      storage
+      .ref()
+      .child(picturePath)
+      .put(this.fileInput.current.files[0])
+      .then(() => {
+        alert("画像の保存完了");
+      }).catch((error) => {
+        alert(error);
+      });
+     
     });
   }
 
@@ -57,6 +75,14 @@ class ProfileEdit extends Component {
         <Header />
         <div className="prf-main-cont">
           <div className="user-profile">
+            <div className="upload-img-cont">
+              <img className="upload-img-preload" src={this.state.picture} alt="profile-picture" />
+              <input
+              className="upload-ing-form"
+              type="file"
+              ref={this.fileInput}
+              onChange={(e) => this.setState({picture: e.target.value})} />
+            </div>
             <form>
               <h1><label>ユーザーネーム</label></h1>
               <input 

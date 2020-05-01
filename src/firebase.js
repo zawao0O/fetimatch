@@ -1,6 +1,6 @@
 // mvpが完成したら、envファイルに移行
 
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 // 使いたい機能ごとにimportしていく
 import "firebase/firestore";
 import 'firebase/auth';

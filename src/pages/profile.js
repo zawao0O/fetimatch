@@ -14,7 +14,8 @@ class Profile extends Component {
       name: "ゲスト",
       age: 23,
       feti: "ノーマル",
-      user: null
+      user: null,
+      picture: "./defaultUser.png"
     };
   }
 
@@ -43,14 +44,14 @@ class Profile extends Component {
         <div className="prf-main-cont">
           <div className="user-profile">
             <div className="prf-img-cont">
-              <img src="./logo192.png" alt="profile-picture" />
+              <img className="prf-img" src={this.state.picture} alt="profile-picture" />
             </div>
             <h1><label>ユーザーネーム</label></h1>
-            <h3>{this.state.name}</h3>
+            <h2>{this.state.name}</h2>
             <h1><label>年齢</label></h1>
-            <h3>{this.state.age}</h3>
+            <h2>{this.state.age}</h2>
             <h1><label>性癖</label></h1>
-            <h3>{this.state.feti}</h3>
+            <h2>{this.state.feti}</h2>
           </div>
           <div className="edit-btn-cont">
             <button className="edit-button" onClick={() => {this.props.history.push("/profileEdit")}}>

@@ -8,10 +8,24 @@
       .user-profile {
         display: flex;
         flex-direction: column;
+        .upload-img-cont {
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          margin-bottom: 30px;
+          .upload-img-preload {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+          }
+        }
         .prf-img-cont {
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
+          width: 150px;
+          height: 150px;
+          margin-bottom: 30px;
+          .prf-img {
+            border-radius: 50%;
+          }
         }
         h1 label{
           display: inline-block;
