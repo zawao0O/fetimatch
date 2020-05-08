@@ -19,6 +19,7 @@ class ProfileEdit extends Component {
     };
 
     this.handleDataUpdate = this.handleDataUpdate.bind(this);
+    // 画像ファイル取得用
     this.fileInput = React.createRef();
   }
 
@@ -33,10 +34,15 @@ class ProfileEdit extends Component {
         this.setState({
           name: doc.data().name,
           age: doc.data().age,
-          feti: doc.data().category
+          feti: doc.data().feti
         });
       });
     });
+
+    // cloud functions 画像の保存をトリガーにfirestore更新する関数を書く
+    // わからんので後回し
+  
+
   }
 
   handleDataUpdate(name, age, feti) {
@@ -45,11 +51,13 @@ class ProfileEdit extends Component {
       db
       .collection("users")
       .doc(`${user.uid}`)
-      .set({ name: name, age: age, category: feti},{merge: true})
+      .set({ name: name, age: age, feti: feti},{merge: true})
       .then(() => {alert("sucsessfully updated")})
       .catch(() => {alert("update faled")});
 
       // 画像保存の処理を記述
+
+      
 
       let picturePath = this.state.picture.replace(/C:\\fakepath\\/, `${user.uid}/`);
       alert(picturePath);

@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import "firebase/firestore";
 import 'firebase/auth';
 import "firebase/storage";
+import "firebase/functions";
 
 const config = {
   apiKey: "AIzaSyC4JgUi5XUzqlNCiOVz7haX9YvEEnGq0W4",
@@ -23,6 +24,8 @@ firebase.initializeApp(config);
 export const db = firebase.firestore();
 // firebase storage(画像やファイル保存用)
 export const storage = firebase.storage();
+// cloud functions for firebase
+export const functions = firebase.functions();
 // firebase apiとの接続
 export default firebase;
 

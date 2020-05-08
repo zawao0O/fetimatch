@@ -30,8 +30,10 @@ class Profile extends Component {
         this.setState({
           name: doc.data().name,
           age: doc.data().age,
-          feti: doc.data().category
+          feti: doc.data().feti,
+          picture: doc.data().picture
         });
+        console.log(doc.data().picture);
       });
     });
   }
