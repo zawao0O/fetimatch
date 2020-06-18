@@ -15,7 +15,8 @@ class ProfileEdit extends Component {
       name: "",
       age: "",
       feti: "",
-      picture: "./defaultUser.png"
+      picture: "./defaultUser.png",
+      pictureDownloadPath: null
     };
 
     this.handleDataUpdate = this.handleDataUpdate.bind(this);
@@ -34,7 +35,14 @@ class ProfileEdit extends Component {
         this.setState({
           name: doc.data().name,
           age: doc.data().age,
-          feti: doc.data().feti
+          feti: doc.data().feti,
+          pictureDownloadPath: doc.data().profilePicture
+        });
+        storage.ref(this.state.pictureDownloadPath).getDownloadURL()
+        .then((url) => {
+          this.setState({
+            picture: url
+          });
         });
       });
     });

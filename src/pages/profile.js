@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { Route } from "react-router-dom";
-import firebase, { db } from "../firebase";
+import firebase, { db, storage } from "../firebase";
+// import { storage } from "../firebase";
 
 import "../styles/profile.scss";
 import Header from "../components/header";
@@ -15,11 +16,12 @@ class Profile extends Component {
       age: 23,
       feti: "ノーマル",
       user: null,
-      picture: "./defaultUser.png"
+      picture: "./defaultUser.png",
+      pictureDownloadPath: null
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // uidからユーザー取得
     firebase.auth().onAuthStateChanged( user => {
       db
@@ -31,9 +33,14 @@ class Profile extends Component {
           name: doc.data().name,
           age: doc.data().age,
           feti: doc.data().feti,
-          picture: doc.data().picture
+          pictureDownloadPath: doc.data().profilePicture
         });
-        console.log(doc.data().picture);
+        storage.ref(this.state.pictureDownloadPath).getDownloadURL()
+        .then((url) => {
+          this.setState({
+            picture: url
+          });
+        });
       });
     });
   }
